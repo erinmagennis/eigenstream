@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  tee-backend:
+    build:
+      context: ./tee-backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+      - "1935:1935"
+    environment:
+      - PORT=8000
+      - RTMP_PORT=1935
+      - STREAM_KEY=eigenstream
+      - VIDEO_STORAGE_PATH=/tmp/eigenstream/videos
+      - ANALYSIS_STORAGE_PATH=/tmp/eigenstream/analysis
+    volumes:
+      - ./data:/tmp/eigenstream
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+      - VITE_WS_URL=ws://localhost:8000
+    depends_on:
+      - tee-backend
+    restart: unless-stopped

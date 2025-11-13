@@ -1,0 +1,53 @@
+GNU GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
+
+Copyright (C) 2025 Erin Magennis
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+---
+
+EigenStream - POV Streaming from Mentra Smart Glasses
+Copyright (C) 2025 Erin Magennis
+
+This project consists of:
+1. Generic Mentra glasses streaming app (glasses-app/)
+2. TEE backend with HLS transcoding (tee-backend/)
+3. Public analytics dashboard (dashboard/)
+
+All components are licensed under GPL v3.
+
+Contact: [Your Email/GitHub]
+Project: https://github.com/[YOUR_USERNAME]/eigenstream
+
+---
+
+SUMMARY (not legally binding, see full license at gnu.org):
+
+✅ You CAN:
+- Use for any purpose
+- Study and modify the code
+- Share and distribute
+- Use commercially
+
+❌ You MUST:
+- Keep source code open
+- Use GPL v3 for derivatives
+- Give credit to original author
+- Share modifications
+
+❌ You CANNOT:
+- Make it closed source
+- Remove attribution
+- Change the license to something more restrictive

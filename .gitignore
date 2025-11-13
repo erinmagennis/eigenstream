@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data
+data/
+*.mp4
+*.mov
+*.avi
+
+# Logs
+logs/
+*.log
+
+# TEE keystore
+keystore.json
+
+# Vercel
+.vercel
+.vercel.json
+
+# HLS streaming (generated at runtime)
+*.m3u8
+*.ts
+/tmp/
+hls/
