@@ -64,6 +64,10 @@ function App() {
             .then(res => res.json())
             .then(data => setStats(data))
             .catch(console.error);
+        } else if (message.type === 'stream-started') {
+          console.log('🎬 Stream started:', message.data);
+        } else if (message.type === 'stream-ended') {
+          console.log('⏹️ Stream ended');
         } else {
           console.log('⚠️ Unknown message type:', message.type);
         }
