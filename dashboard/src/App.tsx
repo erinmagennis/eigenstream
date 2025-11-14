@@ -58,7 +58,9 @@ function App() {
         } else if (message.type === 'pitch-started' || message.type === 'pitch-ended') {
           console.log('🎤 Pitch event, fetching fresh stats...');
           // Fetch updated stats after pitch events
-          fetch(`${API_URL}/api/stats`)
+          fetch(`${API_URL}/api/stats`, {
+            headers: { 'ngrok-skip-browser-warning': 'true' }
+          })
             .then(res => res.json())
             .then(data => setStats(data))
             .catch(console.error);
@@ -81,8 +83,10 @@ function App() {
 
     connectWebSocket();
 
-    // Fetch TEE address
-    fetch(`${API_URL}/api/tee/address`)
+    // Fetch TEE address (with ngrok bypass header)
+    fetch(`${API_URL}/api/tee/address`, {
+      headers: { 'ngrok-skip-browser-warning': 'true' }
+    })
       .then(res => res.json())
       .then(data => setTeeAddress(data.address))
       .catch(console.error);
@@ -116,7 +120,10 @@ function App() {
 
   const startNewPitch = async () => {
     try {
-      await fetch(`${API_URL}/api/pitch/start`, { method: 'POST' });
+      await fetch(`${API_URL}/api/pitch/start`, {
+        method: 'POST',
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      });
     } catch (error) {
       console.error('Failed to start pitch:', error);
     }
@@ -124,7 +131,10 @@ function App() {
 
   const endCurrentPitch = async () => {
     try {
-      await fetch(`${API_URL}/api/pitch/end`, { method: 'POST' });
+      await fetch(`${API_URL}/api/pitch/end`, {
+        method: 'POST',
+        headers: { 'ngrok-skip-browser-warning': 'true' }
+      });
     } catch (error) {
       console.error('Failed to end pitch:', error);
     }

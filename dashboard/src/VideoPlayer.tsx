@@ -10,7 +10,7 @@ export function VideoPlayer({ apiUrl }: VideoPlayerProps) {
   const hlsRef = useRef<Hls | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [streamStatus, setStreamStatus] = useState<any>(null);
+  const [streamStatus, setStreamStatus] = useState<{ active: boolean; hasPlaylist: boolean } | null>(null);
 
   const streamUrl = `${apiUrl}/stream/playlist.m3u8`;
 
@@ -18,7 +18,9 @@ export function VideoPlayer({ apiUrl }: VideoPlayerProps) {
     // Check stream status
     const checkStatus = async () => {
       try {
-        const res = await fetch(`${apiUrl}/api/stream/status`);
+        const res = await fetch(`${apiUrl}/api/stream/status`, {
+          headers: { 'ngrok-skip-browser-warning': 'true' }
+        });
         const status = await res.json();
         setStreamStatus(status);
 
@@ -65,7 +67,7 @@ export function VideoPlayer({ apiUrl }: VideoPlayerProps) {
         video.play().catch(e => console.log('Auto-play prevented:', e));
       });
 
-      hls.on(Hls.Events.ERROR, (event, data) => {
+      hls.on(Hls.Events.ERROR, (_event, data) => {
         console.error('HLS error:', data);
         if (data.fatal) {
           switch (data.type) {
